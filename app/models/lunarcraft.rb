@@ -19,4 +19,10 @@ class Lunarcraft < ApplicationRecord
     current_index = directions.index(direction)
     self.direction = directions.rotate(1)[current_index]
   end
+    def move_up
+    self.direction = 'Up'
+  end
+    def move_down
+    self.direction = 'Down'
+  end
 end

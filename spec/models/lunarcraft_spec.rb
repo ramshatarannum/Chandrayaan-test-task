@@ -32,4 +32,19 @@ RSpec.describe Lunarcraft, type: :model do
       expect(lunarcraft.direction).to eq('E')
     end
   end
+    describe '#move_up' do
+    it 'turns the lunarcraft upwards' do
+      lunarcraft = Lunarcraft.new(x: 0, y: 0, z: 0, direction: 'N')
+      lunarcraft.move_up
+      expect(lunarcraft.direction).to eq('Up')
+    end
+  end
+
+  describe '#move_down' do
+    it 'turns the lunarcraft downwards' do
+      lunarcraft = Lunarcraft.new(x: 0, y: 0, z: 0, direction: 'Up')
+      lunarcraft.move_down
+      expect(lunarcraft.direction).to eq('Down')
+    end
+  end
 end

@@ -18,6 +18,20 @@ RSpec.describe Lunarcraft, type: :model do
       expect(lunarcraft.y).to eq(1)
     end
   end
+
+    describe '#turn_backward' do
+    it 'moves the lunarcraft one step backward in the current direction' do
+      lunarcraft = Lunarcraft.new(x: 0, y: 0, z: 0, direction: 'N')
+      lunarcraft.turn_backward
+      expect(lunarcraft.y).to eq(-1)
+    end
+
+    it 'does not allow the lunarcraft to move beyond galactic boundaries' do
+      lunarcraft = Lunarcraft.new(x: 0, y: 0, z: 0, direction: 'W')
+      lunarcraft.turn_backward
+      expect(lunarcraft.x).to eq(1) # Should not move beyond the boundary
+    end
+  end
   describe '#move_left' do
     it 'turns the lunarcraft 90 degrees to the left' do
       lunarcraft = Lunarcraft.new(x: 0, y: 0, z: 0, direction: 'N')

@@ -18,4 +18,18 @@ RSpec.describe Lunarcraft, type: :model do
       expect(lunarcraft.y).to eq(1)
     end
   end
+  describe '#move_left' do
+    it 'turns the lunarcraft 90 degrees to the left' do
+      lunarcraft = Lunarcraft.new(x: 0, y: 0, z: 0, direction: 'N')
+      lunarcraft.move_left
+      expect(lunarcraft.direction).to eq('W')
+    end
+  end
+  describe '#move_right' do
+    it 'turns the lunarcraft 90 degrees to the right' do
+      lunarcraft = Lunarcraft.new(x: 0, y: 0, z: 0, direction: 'N')
+      lunarcraft.move_right
+      expect(lunarcraft.direction).to eq('E')
+    end
+  end
 end

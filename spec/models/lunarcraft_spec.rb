@@ -61,4 +61,12 @@ RSpec.describe Lunarcraft, type: :model do
       expect(lunarcraft.direction).to eq('Down')
     end
   end
+  describe '#execute_commands' do
+    it 'executes a series of commands accurately and efficiently' do
+      lunarcraft = Lunarcraft.new(x: 0, y: 0, z: 0, direction: 'N')
+      lunarcraft.execute_commands(['f', 'r', 'u', 'b', 'l'])
+      expect(lunarcraft.position).to eq([0, 1, 0])
+      expect(lunarcraft.direction).to eq('W')
+    end
+  end
 end

@@ -33,6 +33,13 @@ class Lunarcraft < ApplicationRecord
     when 'W' then move_along_axis(:x, 1, max_bound: 9_999_999)
     end
   end
+  def execute_commands(commands)
+    commands.each { |command| execute_command(command) }
+  end
+
+  def position
+    [x, y, z]
+  end
   private
 
   def move_along_axis(axis, step, max_bound: nil)
@@ -40,5 +47,15 @@ class Lunarcraft < ApplicationRecord
   end
     def max_bound_reached?(axis, step, max_bound)
     max_bound && (self.send(axis) + step).send(axis == :y ? :zero? : :>=, max_bound)
+  end
+  def execute_command(command)
+    case command
+    when 'f' then turn_forward
+    when 'b' then turn_backward
+    when 'l' then move_left
+    when 'r' then move_right
+    when 'u' then move_up
+    when 'd' then move_down
+    end
   end
 end
